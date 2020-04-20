@@ -76,10 +76,19 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-
-
-
-
+for array in range(len(d)):
+    for row in range(len(d[array])):
+        for col in range(len(d[array,row])):
+            if d[array, row, col] == d_min:
+                f[array, row, col] = 0
+            elif d_min < d[array, row, col] < d_mean:
+                f[array, row, col] = 25
+            elif d[array, row, col] == d_mean:
+                f[array, row, col] = 50
+            elif d_mean < d[array, row, col] < d_max:
+                f[array, row, col] = 75
+            elif d[array, row, col] == d_max:
+                f[array, row, col] = 100
 """
 #17. Print d and f. Do you have your expected f?
 For instance, if your d is:
@@ -100,7 +109,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print(d)
+print(f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
