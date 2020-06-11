@@ -1,67 +1,78 @@
 #1. Import the NUMPY package under the name np.
-
+import numpy as np
 
 
 #2. Print the NUMPY version and the configuration.
-
-
+print(np.version.version)
+'''
+1.18.1
+'''
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
+a = np.random.random((2,3,5))
 
 
 #4. Print a.
-
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
+b = np.ones((5,2,3))
 
 
 #6. Print b.
-
+print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
+print('a_size == b_size:', a.size == b.size)
 
 
 
 #8. Are you able to add a and b? Why or why not?
-
-
+# print(a + b)
+'''
+ValueError: operands could not be broadcast together with shapes (2,3,5) (5,2,3)
+'''
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
+c = b.transpose(1,2,0)
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
-
-
+d = a + c
+'''
+Both arrays have the same shape
+'''
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
+print('a= ', a)
+print('d= ', d)
+'''
+a_ijk = a_ijk + 1
+'''
 
 
 #12. Multiply a and c. Assign the result to e.
-
+e = a * c
 
 
 #13. Does e equal to a? Why or why not?
-
+print('a == e:',np.array_equal(a, e) )
 
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
-
-
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
+print(f'd_max = {d_max:.3f}, d_min = {d_min:.3f}, d_mean = {d_mean:.3f}')
 
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
+f = np.empty((2,3,5))
 
 
 
@@ -74,9 +85,17 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
+mask25  =  np.logical_and(d > d_min,  d < d_mean)
+mask75  =  np.logical_and(d > d_mean, d < d_max)
+mask50  =  d == d_mean
+mask0   =  d == d_min
+mask100 =  d == d_max
 
-
-
+f[mask25]  = 25
+f[mask75]  = 75
+f[mask50]  = 50
+f[mask0]   = 0
+f[mask100] = 100
 
 """
 #17. Print d and f. Do you have your expected f?
@@ -98,7 +117,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print('d= ', d)
+print('f= ', f)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
