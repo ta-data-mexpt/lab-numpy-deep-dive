@@ -1,45 +1,107 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
-
+print(np.version.version)
+"""1.19.2"""
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
+a = np.random.random((2,3,5))
 
 
 #4. Print a.
+
+print(a)
+
+"""[[[0.80222493 0.42029408 0.78039113 0.58721377 0.72518018]
+  [0.60683695 0.36694919 0.37249113 0.01239638 0.23655994]
+  [0.04821455 0.6971946  0.6888483  0.43058395 0.40011912]]
+
+ [[0.8059214  0.61855801 0.96705493 0.35988266 0.70827823]
+  [0.09980214 0.50450925 0.70015765 0.50128975 0.37647308]
+  [0.95894273 0.33905761 0.66233813 0.00279417 0.21494568]]]"""
 
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
+b = np.ones((5,2,3))
 
 
 #6. Print b.
 
+print(b)
+
+"""[[[1. 1. 1.]
+  [1. 1. 1.]]
+
+ [[1. 1. 1.]
+  [1. 1. 1.]]
+
+ [[1. 1. 1.]
+  [1. 1. 1.]]
+
+ [[1. 1. 1.]
+  [1. 1. 1.]]
+
+ [[1. 1. 1.]
+  [1. 1. 1.]]]"""
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
+print(a.shape)
+print(b.shape)
+print(a.size)
+print(b.size)
 
-
+"""(2, 3, 5)
+(5, 2, 3)
+30
+30"""
 
 #8. Are you able to add a and b? Why or why not?
+
+""" no puedo porque están estrudcturado de manera diferente:
+
+(2, 3, 5)
+(5, 2, 3)"""
 
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-
+c = b.transpose()
+print(c)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
+d = (a+c)
+print(d)
+print(c.shape)
+"""(3, 2, 5) sigue sin funcionar porque los elementos aun siguen siendo distintos entre a y c"""
 
+""" c= [[[1. 1. 1. 1. 1.]
+  [1. 1. 1. 1. 1.]]
+
+ [[1. 1. 1. 1. 1.]
+  [1. 1. 1. 1. 1.]]
+
+ [[1. 1. 1. 1. 1.]
+  [1. 1. 1. 1. 1.]]]"""
+
+"""a=[[[0.80222493 0.42029408 0.78039113 0.58721377 0.72518018]
+  [0.60683695 0.36694919 0.37249113 0.01239638 0.23655994]
+  [0.04821455 0.6971946  0.6888483  0.43058395 0.40011912]]
+
+ [[0.8059214  0.61855801 0.96705493 0.35988266 0.70827823]
+  [0.09980214 0.50450925 0.70015765 0.50128975 0.37647308]
+  [0.95894273 0.33905761 0.66233813 0.00279417 0.21494568]]]"""
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
