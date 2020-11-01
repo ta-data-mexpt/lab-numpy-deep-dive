@@ -2,8 +2,8 @@
 import numpy as np
 import random 
 #2. Print the NUMPY version and the configuration.
-#print(np.__version__)
-#print(np.show_config())
+print(np.__version__)
+print(np.show_config())
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 a = np.random.random((2,3,5))
@@ -11,6 +11,7 @@ lista = [[[random.random() for i in range(5)] for i in range(3)] for i in range(
 print(lista)
 a2 = np.array(lista)
 print('a2 = ', a2)
+a3 = np.random.randint((2,3,5))
 #4. Print a.
 print('a=', a)
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
@@ -60,21 +61,19 @@ Assign 100 to the corresponding value(s) in f for d_max in d.
 In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
-for i in d :
-    if i>d_min and i<d_mean :
-        f=25
-    if i>d_mean and i<d_max :
-        f=75
-    elif i==d_mean:
-        f=50
-    elif i==d_min:
-        f=0
-    elif i==d_max:
-        f=100
-
-
-
-
+for i in range(2) :
+    for j in range(3):
+        for k in range(5):
+            if d[i,j,k]>d_min and d[i,j,k]<d_mean :
+                f[i,j,k]=25
+            elif d[i,j,k]>d_mean and d[i,j,k]<d_max :
+                f[i,j,k]=75
+            elif d[i,j,k]==d_mean:
+                f[i,j,k]=50
+            elif d[i,j,k]==d_min:
+                f[i,j,k]=0
+            elif d[i,j,k]==d_max:
+                f[i,j,k]=100
 """
 #17. Print d and f. Do you have your expected f?
 For instance, if your d is:
@@ -95,7 +94,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-
+print('f = ',f)
+print('d = ',d)
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -109,3 +109,18 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+g=np.empty((2,3,5), dtype=str)
+for i in range(2) :
+    for j in range(3):
+        for k in range(5):
+            if d[i,j,k]>d_min and d[i,j,k]<d_mean :
+                g[i,j,k]='B'
+            elif d[i,j,k]>d_mean and d[i,j,k]<d_max :
+                g[i,j,k]='D'
+            elif d[i,j,k]==d_mean:
+                g[i,j,k]='C'
+            elif d[i,j,k]==d_min:
+                g[i,j,k]='A'
+            elif d[i,j,k]==d_max:
+                g[i,j,k]='E'
+print(g)
