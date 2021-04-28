@@ -1,68 +1,79 @@
 #1. Import the NUMPY package under the name np.
-
+import numpy as np
 
 
 #2. Print the NUMPY version and the configuration.
-
+print(np.version.version)
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
+a = np.random.random((2,3,5))
 
 
 #4. Print a.
-
+print(a)
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
+b = np.ones((5,2,3))
 
 
 #6. Print b.
-
+print(b)
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
-
+if a.size == b.size:
+    print("Matriz a y b son del mismo tamaño")
+else:
+    print("Matriz a y b no son del mismo tamaño")
 
 
 
 #8. Are you able to add a and b? Why or why not?
-
+""" No es posible sumarlos porque no conciden sus dimenciones a = (2,3,5)   b = (5,2,3) """
 
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
-
+c = b.reshape(2,3,5)
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+d = np.add(a,c)
+""" Ahora funciona porque tienen las mismas dimenciones"""
 
 
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
-
-
+print(a)
+print()
+print(d)
+""" La diferencia es de 1 entre las dos matrices """
 
 
 #12. Multiply a and c. Assign the result to e.
-
-
+e = np.multiply(a, c)
+print("Matriz e")
+print(e)
+print("Matriz a")
+print(a)
 
 #13. Does e equal to a? Why or why not?
-
-
+""" Si es igual. Da el mismo valor porque los valores de b son igual a 1 """
 
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
 
-
-
+print(d_max)
+print(d_min)
+print(d_mean)
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
-
-
+f = np.empty([2,3,5])
 
 
 """
@@ -75,8 +86,24 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
-
-
+for x in range(len(d)):
+    for y in range(len(d[x])):
+        for z in range(len(d[x][y])):
+            i = d[x][y][z]
+            if i > d_min and i < d_mean:
+                f[x][y][z] = 25     
+            elif i > d_mean and i < d_max:
+                f[x][y][z] = 75
+            elif i == d_mean:
+                f[x][y][z] = 50
+            elif i == d_min:
+                f[x][y][z] = 0
+            else: 
+                f[x][y][z] = 100
+print()
+print(d)
+print()
+print(f)
 
 """
 #17. Print d and f. Do you have your expected f?
@@ -112,3 +139,25 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+f = np.empty([2,3,5], dtype=str)
+
+for x in range(len(d)):
+    for y in range(len(d[x])):
+        for z in range(len(d[x][y])):
+            i = d[x][y][z]
+            if i > d_min and i < d_mean:
+                f[x][y][z] = "B"     
+            elif i > d_mean and i < d_max:
+                f[x][y][z] = "D"
+            elif i == d_mean:
+                f[x][y][z] = "C"
+            elif i == d_min:
+                f[x][y][z] = "A"
+            else: 
+                f[x][y][z] = "E"
+
+print()
+print(d)
+print()
+print(f)
