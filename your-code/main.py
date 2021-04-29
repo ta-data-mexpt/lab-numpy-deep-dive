@@ -22,24 +22,22 @@ print(b)
 
 
 # 7. Do a and b have the same size? How do you prove that in Python code?
-print(a)
-a = b.copy()
-print(a)
-
+b = a.copy()
+print(b)
 
 # 8. Are you able to add a and b? Why or why not?
 # No, because they have diferentes dimensions
 
 
 # 9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-c = b.reshape(2, 3, 5)
+c = b.reshape([2,3,5])
 print(c)
 
 
 # 10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 d = a+c
 print(d)
-both arrays have the same structure
+# both arrays have the same structure
 
 # 11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 print(a)
