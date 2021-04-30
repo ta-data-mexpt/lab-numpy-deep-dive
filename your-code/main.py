@@ -1,52 +1,74 @@
 #1. Import the NUMPY package under the name np.
 
-
+import numpy as np
 
 #2. Print the NUMPY version and the configuration.
 
+print(np.__version__)
+print(np.show_config())
 
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
 
+# There are 5 general mechanisms for creating arrays:
+    # Conversion from other Python structures (e.g., lists, tuples)
+    # Intrinsic numpy array creation objects (e.g., arange, ones, zeros, etc.)
+    # Reading arrays from disk, either from standard or custom formats
+    # Creating arrays from raw bytes through the use of strings or buffers
+    # Use of special library functions (e.g., random)
+    # Source: Numpy documentation
+
+a = np.random.random((2,3,5))
 
 
 #4. Print a.
 
-
+print(a)
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
 
+b = np.ones((5,2,3))
 
 
 #6. Print b.
 
-
+print(b)
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
+comparison = a.shape == b.shape
 
+print(comparison)
 
+# They do not have the same size
 
 #8. Are you able to add a and b? Why or why not?
 
-
+# No, it returns an error. Because, the operands could not be broadcast together with different shapes.
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
+c = np.reshape(b,(2,3,5))
 
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
+d = np.add(a,c)
 
+# It works now, because the two arrays have the same size.
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
+print(a)
+print(d)
 
+# The difference now is that the d array have an increase value of 1. And the relationship that have the both of them is the value of 1. 
 
 
 #12. Multiply a and c. Assign the result to e.
+
 
 
 
