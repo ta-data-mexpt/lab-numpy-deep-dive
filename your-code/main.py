@@ -69,13 +69,12 @@ print(d)
 
 #12. Multiply a and c. Assign the result to e.
 
-
+e = np.multiply(a,c)
 
 
 #13. Does e equal to a? Why or why not?
 
-
-
+# Yes, both arrays are equal because c is an array made of 1s. So by multiply any number by 1, you get the same value.
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
