@@ -97,7 +97,23 @@ In the end, f should have only the following values: 0, 25, 50, 75, and 100.
 Note: you don't have to use Numpy in this question.
 """
 
+f = np.empty((2,3,5))
 
+for x in d:
+    for y in x:
+        for z in y:
+            if i > d_min and i < d_mean:
+                f.append(25)
+            elif i > d_mean and i < d_max:
+                f.append(75)
+            elif i == d_mean:
+                f.append(50)
+            elif i == d_min:
+                f.append(0)
+            else:
+                f.append(100)
+
+print(f)
 
 
 """
