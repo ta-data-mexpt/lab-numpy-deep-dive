@@ -102,13 +102,13 @@ f = np.empty((2,3,5))
 for x in d:
     for y in x:
         for z in y:
-            if i > d_min and i < d_mean:
+            if z > d_min and z < d_mean:
                 f.append(25)
-            elif i > d_mean and i < d_max:
+            elif z > d_mean and z < d_max:
                 f.append(75)
-            elif i == d_mean:
+            elif z == d_mean:
                 f.append(50)
-            elif i == d_min:
+            elif z == d_min:
                 f.append(0)
             else:
                 f.append(100)
