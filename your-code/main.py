@@ -99,19 +99,19 @@ Note: you don't have to use Numpy in this question.
 
 f = np.empty((2,3,5))
 
-for x in d:
-    for y in x:
-        for z in y:
-            if z > d_min and z < d_mean:
-                f.append(25)
-            elif z > d_mean and z < d_max:
-                f.append(75)
-            elif z == d_mean:
-                f.append(50)
-            elif z == d_min:
-                f.append(0)
-            else:
-                f.append(100)
+with np.nditer(f, op_flags=['readwrite']) as it:
+    
+    for x in it:
+        if x > d_min and x < d_mean:
+            f = np.append(f, 25)
+        elif x > d_mean and x < d_max:
+            f = np.append(f, 75)
+        elif x == d_mean:
+            f = np.append(f, 50)
+        elif x == d_min:
+            f = np.append(f, 0)
+        else:
+            f = np.append(f, 100)
 
 print(f)
 
