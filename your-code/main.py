@@ -1,73 +1,155 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[29]:
+
+
 #1. Import the NUMPY package under the name np.
 
 import numpy as np
+
+
+# In[30]:
+
 
 #2. Print the NUMPY version and the configuration.
 print(np.__version__)
 print(np.show_config())
 
 
+# In[31]:
+
+
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
-# Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-
-a= np.randint(2x3x5)
-
+# Challenge: there are at least three easy ways that use numpy to generate random arrays.
+#How many ways can you find?
 #4. Print a.
 
+a= np.random.rand(2,3,5)
+print(a)
+
+#falta investigar las otras dos formas de generar random arrays
+
+
+# In[47]:
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-
-
-
 #6. Print b.
 
+b = np.ones((5,3,2))
+print(b)
+
+
+# In[48]:
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
+#print(a.shape)
+#print(b.shape)
+
+if a.size == b.size:
+    print("Son iguales") 
+elif a.size > b.size:
+    print("A es mayor") 
+elif a.size < b.size:
+    print("B es mayor") 
 
 
+# In[49]:
 
 
-#8. Are you able to add a and b? Why or why not?
+#8. Are you able to add a and b? Why or why not? No porque no se pueden unir dos arreglos de distinta forma
+#ValueError: all the input array dimensions for the concatenation axis must match exactly, 
+#but along dimension 2, the array at index 0 has size 5 and the array at index 1 has size 2
+
+c = np.concatenate((a, b))
 
 
-
-#9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
-
+# In[50]:
 
 
-#10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
+#9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). 
+#Assign the transposed array to varialbe "c".
+
+c = np.transpose(b)
 
 
+# In[51]:
 
-#11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
+
+print(c)
 
 
+# In[52]:
+
+
+d = np.concatenate((c, b))
+d
+
+
+# In[53]:
+
+
+#11. Print a and d. 
+#Notice the difference and relation of the two array in terms of the values? Explain.
+print ("A:", a)
+print ("D:", d)
+
+
+# In[54]:
 
 
 #12. Multiply a and c. Assign the result to e.
+e = np.multiply (a,c)
+e
 
+
+# In[56]:
 
 
 #13. Does e equal to a? Why or why not?
+#sí porque multiplicamos por uno
+if a.all() == e.all():
+    print("Sí")
 
 
+# In[62]:
 
 
-#14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
+#14. Identify the max, min, and mean values in d.
+#Assign those values to variables "d_max", "d_min", and "d_mean"
+
+d_max= d.max()
+print("MAX:",d_max)
+
+d_min= d.min()
+print("MIN:",d_min)
+
+d_mean= d.mean()
+print("MEAN:",d_mean)
 
 
+# In[ ]:
 
 
-#15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
+#15. Now we want to label the values in d. 
+#First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
 
+# In[64]:
+
+
+f = np.empty ((2,3,5))
+
+
+# In[ ]:
 
 
 """
-#16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
+#16. Populate the values in f. For each value in d, if 
+it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
 If a value in d is larger than d_mean but smaller than d_max, assign 75 to the corresponding value in f.
 If a value equals to d_mean, assign 50 to the corresponding value in f.
 Assign 0 to the corresponding value(s) in f for d_min in d.
@@ -77,6 +159,7 @@ Note: you don't have to use Numpy in this question.
 """
 
 
+# In[1]:
 
 
 """
@@ -101,6 +184,9 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 """
 
 
+# In[ ]:
+
+
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
@@ -113,3 +199,4 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
