@@ -80,14 +80,19 @@ Note: you don't have to use Numpy in this question.
 """
 
 def fun_16(x):
-    if d_mean>x>d_min: return 25
-    elif d_max>x>d_mean: return 75
+    if d_min<x<d_mean: return 25
+    elif d_mean<x<d_max: return 75
     elif d_mean==x: return 50
     elif d_min==x: return 0
     elif d_max==x: return 100
 
-F = fun_16(d)
-
+for i in range(len(d)):
+    for j in range(len(d[0])):
+        for k in range(len(d[0][0])):
+            f[i][j][k] = fun_16(d[i][j][k])
+ 
+method2 = np.array(list(map(fun_16, list(d.flatten())))).reshape(d.shape)
+print(method2)   
 """
 #17. Print d and f. Do you have your expected f?
 For instance, if your d is:
@@ -106,9 +111,10 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
 
-print(d,'\n')
-#print(F)
-
+            
+print(d)
+print(f)
+            
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
 ("A", "B", "C", "D", and "E") to label the array elements? You are expecting the result to be:
@@ -120,3 +126,12 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
+
+def fun_16(x):
+    if d_min<x<d_mean: return 'B'
+    elif d_mean<x<d_max: return 'D'
+    elif d_mean==x: return 'C'
+    elif d_min==x: return 'A'
+    elif d_max==x: return 'E'
+Bonus = np.array(list(map(fun_16, list(d.flatten())))).reshape(d.shape)
+print(Bonus)
