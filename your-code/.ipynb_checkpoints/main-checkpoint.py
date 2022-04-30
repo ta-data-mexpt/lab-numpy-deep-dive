@@ -9,69 +9,62 @@ print (numpy.__version__)
 
 #3. Generate a 2x3x5 3-dimensional array with random values. Assign the array to variable "a"
 # Challenge: there are at least three easy ways that use numpy to generate random arrays. How many ways can you find?
-a=np.random.random((2,3,5))
+
 
 
 #4. Print a.
-print (a)
 
 
 
 #5. Create a 5x2x3 3-dimensional array with all values equaling 1.
 #Assign the array to variable "b"
-b= np.ones((5,2,3))
+
 
 
 #6. Print b.
-print (b)
+
 
 
 #7. Do a and b have the same size? How do you prove that in Python code?
 
-Si, usando ".size" para conocer el número total de elementos,ambos tienen 30 elementos.
+
 
 
 #8. Are you able to add a and b? Why or why not?
 
-No, ya que tienen diferentes longitudes.
+
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
 
-c= b.transpose(1,2,0)
+
 
 #10. Try to add a and c. Now it should work. Assign the sum to varialbe "d". But why does it work now?
 
-d= np.add(a,c)
-Si funciona porque ahora ambos tienen la misma forma (2x3x5)
+
 
 #11. Print a and d. Notice the difference and relation of the two array in terms of the values? Explain.
 
-print(a)
-print(d)
-Los valores de d corresponden a + c y cada valor esta organizado de la misma forma.
+
+
 
 #12. Multiply a and c. Assign the result to e.
 
-e= np.multiply(a,c)
+
 
 #13. Does e equal to a? Why or why not?
 
 
-Si, ya que se esta multiplicando por 1, que son todos los valores que tiene c.
+
 
 #14. Identify the max, min, and mean values in d. Assign those values to variables "d_max", "d_min", and "d_mean"
 
-d_max= np.max(d) 
-d_min= np.min(d)  
-d_mean=np.mean(d) 
 
-d_max=1.8662609373382986
-d_min=1.0371414852698932
-d_mean=1.4660275241905192
+
 
 #15. Now we want to label the values in d. First create an empty array "f" with the same shape (i.e. 2x3x5) as d using `np.empty`.
 
-f= np.empty((2,3,5))
+
+
 
 """
 #16. Populate the values in f. For each value in d, if it's larger than d_min but smaller than d_mean, assign 25 to the corresponding value in f.
@@ -106,36 +99,7 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
         [ 75.,  75.,  75.,  75.,  75.],
         [ 25.,  75.,   0.,  75.,  75.]]])
 """
-for a, valor_a in enumerate(d):
-    for b, valor_b in enumerate(valor_a):
-        for c, valor in enumerate(valor_b):
-            if valor > d_min and valor < d_mean:
-                valor = 25
-                f[a][b][c] =valor
-        
-            elif valor > d_mean and valor < d_max:
-                valor = 75
-                f[a][b][c] = valor
-        
-            elif valor == d_mean:
-                valor = 50
-                f[a][b][c] = valor
-        
-            elif valor == d_min:
-                valor = 0
-                f[a][b][c] = valor
-        
-            elif valor == d_max:
-                valor = 100
-                f[a][b][c] = valor
-f
-array([[[ 75,  75,  75,  25,  75],
-        [  0,  25,  25, 100,  75],
-        [ 75,  75,  25,  25,  25]],
 
-       [[ 75,  75,  75,  75,  25],
-        [ 25,  75,  25,  75,  25],
-        [ 25,  75,  25,  75,  75]]])
 
 """
 #18. Bonus question: instead of using numbers (i.e. 0, 25, 50, 75, and 100), how to use string values 
@@ -149,39 +113,3 @@ array([[[ 'D',  'D',  'D',  'B',  'D'],
         [ 'B',  'D',   'A',  'D', 'D']]])
 Again, you don't need Numpy in this question.
 """
-g= np.empty(((2,3,5)), dtype = str)
-
-for a, valor_a in enumerate(d):
-    for b, valor_b in enumerate(valor_a):
-        for c, valor in enumerate(valor_b):
-            if valor > d_min and valor < d_mean:
-                valor = "B"
-                g[a][b][c] =valor
-        
-            elif valor > d_mean and valor < d_max:
-                valor = "D"
-                g[a][b][c] = valor
-        
-            elif valor == d_mean:
-                valor = "C"
-                g[a][b][c] = valor
-        
-            elif valor == d_min:
-                valor = "A"
-                g[a][b][c] = valor
-        
-            elif valor == d_max:
-                valor = "E"
-                g[a][b][c] = valor
-g
-
-array([[['D', 'D', 'D', 'B', 'D'],
-        ['A', 'B', 'B', 'E', 'D'],
-        ['D', 'D', 'B', 'B', 'B']],
-
-       [['D', 'D', 'D', 'D', 'B'],
-        ['B', 'D', 'B', 'D', 'B'],
-        ['B', 'D', 'B', 'D', 'D']]], dtype='<U1')
-
-#No supe bien como eliminar el "dtype" del array final##
-
