@@ -24,7 +24,7 @@ print(a.size)
 print(b.size)
 
 #8. Are you able to add a and b? Why or why not?
-# No, because the shape is different.
+a * b
 # No. Because they don't the same shape.
 
 #9. Transpose b so that it has the same structure of a (i.e. become a 2x3x5 array). Assign the transposed array to varialbe "c".
